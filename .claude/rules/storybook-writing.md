@@ -7,10 +7,21 @@ Storybook 스토리 작성 시 준수해야 할 규칙
 | 카테고리 | title 접두사 | 설명 |
 |---------|-------------|------|
 | **Style** | `Style/` | 디자인 토큰 문서 (색상, 타이포그래피, 간격 등) |
-| **Custom Component** | `Custom Component/` | 프로젝트에서 새로 만든 재사용 컴포넌트 |
+| **Custom Component** | `Custom Component/{SubCategory}/` | 프로젝트에서 새로 만든 재사용 컴포넌트 |
 | **Template** | `Template/` | 여러 컴포넌트를 조합한 템플릿 |
-| **Section** | `Section/` | 페이지를 구성하는 섹션 단위 컴포넌트 |
+| **Section** | `Section/` 또는 `Section/{Group}/` | 페이지를 구성하는 섹션 단위 컴포넌트 |
 | **Page** | `Page/` | 전체 페이지 레벨 컴포넌트 |
+
+### 하위 카테고리 규칙
+
+**Custom Component**: 컴포넌트가 위치한 폴더명을 서브카테고리로 사용한다.
+- `Custom Component/Card/BookCard` (← `src/components/card/BookCard.jsx`)
+- `Custom Component/Shared/StarRating` (← `src/components/shared/StarRating.jsx`)
+- `Custom Component/Data/CuratorView` (← `src/components/data/CuratorView.jsx`)
+
+**Section**: 관련 섹션이 3개 이상일 경우 기능 그룹명으로 서브카테고리를 만든다.
+- `Section/CreateExhibition/Step1BasicInfo` (← `src/sections/create/`)
+- `Section/ExhibitionEntrance` (← `src/sections/`, 그룹 없이 직접 배치)
 
 ## 필수 규칙
 
@@ -26,6 +37,45 @@ Storybook 스토리 작성 시 준수해야 할 규칙
 | Description Korean | DocumentTitle 외의 설명 (페이지 제목, 섹션 설명, 테이블 내용 등)은 한글로 작성 |
 | Props Table Required | (Component) 모든 스토리 Doc의 최상단에 컴포넌트 설명과 함께 Props 테이블을 표시 |
 | SectionTitle Usage | 2개 이상의 섹션이 있을 경우 반드시 `SectionTitle`로 구분 |
+| Hooks in Render | 스토리 `render` 함수 내에서 직접 React hooks(useState, useEffect 등) 호출 금지. 별도 컴포넌트로 추출해야 함 |
+
+### 스토리 내 Hooks 사용 패턴
+
+스토리의 `render` 함수에서 직접 hooks를 호출하면 `react-hooks/rules-of-hooks` 에러가 발생한다. 반드시 별도 PascalCase 컴포넌트로 추출한다.
+
+**잘못된 패턴 (금지):**
+```jsx
+export const Interactive = {
+  render: () => {
+    const [value, setValue] = useState(''); // ESLint 에러!
+    return <Component value={value} onChange={setValue} />;
+  },
+};
+```
+
+**올바른 패턴:**
+```jsx
+function InteractiveStory() {
+  const [value, setValue] = useState('');
+  return <Component value={ value } onChange={ setValue } />;
+}
+
+export const Interactive = {
+  render: () => <InteractiveStory />,
+};
+```
+
+**args 전달이 필요한 경우:**
+```jsx
+function DefaultStory(args) {
+  const [value, setValue] = useState('');
+  return <Component value={ value } onChange={ setValue } { ...args } />;
+}
+
+export const Default = {
+  render: (args) => <DefaultStory { ...args } />,
+};
+```
 
 ### Story Types
 

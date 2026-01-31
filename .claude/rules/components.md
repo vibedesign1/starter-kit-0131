@@ -82,3 +82,52 @@
 - Page1: 샘플 페이지 1 (`pages/Page1.jsx`)
 - Page2: 샘플 페이지 2 (`pages/Page2.jsx`)
 - Page3: 샘플 페이지 3 (`pages/Page3.jsx`)
+
+---
+
+## 나의 추억 전시관 (프로젝트 전용)
+
+책 추억 전시 서비스를 위한 커스텀 컴포넌트, 섹션, 페이지.
+
+### Shared
+
+- StarRating: 별점 표시/입력. MUI Rating 래핑. value, onChange, isReadOnly, size (`components/shared/StarRating.jsx`)
+- EmptyState: 빈 상태 표시. icon, title, description, actionLabel, onAction (`components/shared/EmptyState.jsx`)
+- StepIndicator: 다단계 진행 표시. MUI Stepper 래핑. activeStep, steps, onStepClick (`components/shared/StepIndicator.jsx`)
+- ThemeSelector: 전시 테마 3종 선택. CardContainer 기반. value, onChange, themes (`components/shared/ThemeSelector.jsx`)
+- BookSearchResult: 책 검색 결과 리스트 아이템. coverImage, title, author, publisher, isSelected (`components/shared/BookSearchResult.jsx`)
+
+### Card
+
+- BookCard: 책 미리보기 카드. 표지+제목+저자+코멘트+별점. layout(compact/standard/detailed) (`components/card/BookCard.jsx`)
+- ExhibitionCard: 전시 카드. 2x2 책 썸네일 그리드+제목+설명. onClick, onEdit (`components/card/ExhibitionCard.jsx`)
+
+### Input
+
+- BookDetailForm: 책 상세 정보 입력 폼. 코멘트, 추억, 인용문, 별점, 태그 입력. 확장 필드 토글 (`components/input/BookDetailForm.jsx`)
+
+### Media
+
+- GalleryWalkViewer: 복도 뷰 뷰어. 좌우 스와이프, 인디케이터, 자세히 보기 버튼 (`components/media/GalleryWalkViewer.jsx`)
+
+### Data
+
+- CuratorView: 큐레이터 상세 뷰. 책 표지+상세정보 분할, 코멘트/추억/인용문/메타 표시, 이전/다음 네비 (`components/data/CuratorView.jsx`)
+
+### Sections
+
+- ExhibitionEntrance: 전시 입장 풀스크린 히어로. FullPageContainer 기반 (`sections/ExhibitionEntrance.jsx`)
+- ExhibitionListSection: 홈 전시 목록 그리드 + EmptyState + FAB (`sections/ExhibitionListSection.jsx`)
+- GalleryWalkSection: 복도 뷰 섹션. 상단 네비 + GalleryWalkViewer (`sections/GalleryWalkSection.jsx`)
+- CuratorViewSection: 큐레이터 뷰 섹션. CuratorView 래핑 + 내부 상태 관리 (`sections/CuratorViewSection.jsx`)
+- CreateStep1BasicInfo: 전시 만들기 1단계. 제목, 소개글, 테마 선택 (`sections/create/CreateStep1BasicInfo.jsx`)
+- CreateStep2AddBooks: 전시 만들기 2단계. 책 검색 + 추가 (`sections/create/CreateStep2AddBooks.jsx`)
+- CreateStep2BookDetail: 전시 만들기 2단계 하위. 책 상세 입력 (`sections/create/CreateStep2BookDetail.jsx`)
+- CreateStep3Arrange: 전시 만들기 3단계. 배치 방식 + 순서 확인 (`sections/create/CreateStep3Arrange.jsx`)
+- CreateStep4Preview: 전시 만들기 4단계. GalleryWalkViewer 미리보기 + 완료 (`sections/create/CreateStep4Preview.jsx`)
+
+### Pages
+
+- HomePage: 홈 화면. AppShell + ExhibitionListSection (`pages/HomePage.jsx`)
+- CreateExhibitionPage: 전시 만들기 페이지. 4단계 플로우 + 내부 상태 관리 (`pages/CreateExhibitionPage.jsx`)
+- ExhibitionViewPage: 전시 감상 페이지. 입장→복도뷰→큐레이터뷰 전환 (`pages/ExhibitionViewPage.jsx`)

@@ -1,0 +1,53 @@
+/**
+ * Muse 모달용 mock 에셋 데이터
+ */
+export const museAssets = [
+  {
+    id: 'asset-1',
+    title: 'Modern Architecture',
+    type: 'image',
+    format: 'JPEG',
+    resolution: '4000x3000',
+    size: '8.2 MB',
+    thumbnail: 'https://images.pexels.com/photos/3945659/pexels-photo-3945659.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tags: ['Architecture', 'Modern', 'Building'],
+    license: 'Commercial',
+    status: 'approved',
+  },
+  {
+    id: 'asset-2',
+    title: 'Abstract Landscape',
+    type: 'image',
+    format: 'PNG',
+    resolution: '3200x2400',
+    size: '5.4 MB',
+    thumbnail: 'https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tags: ['Landscape', 'Abstract', 'Nature'],
+    license: 'Commercial',
+    status: 'approved',
+  },
+  {
+    id: 'asset-3',
+    title: 'Neon City Night',
+    type: 'image',
+    format: 'JPEG',
+    resolution: '2400x1600',
+    size: '6.1 MB',
+    thumbnail: 'https://images.pexels.com/photos/3131971/pexels-photo-3131971.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tags: ['Neon', 'City', 'Night'],
+    license: 'Internal Only',
+    status: 'pending',
+  },
+  {
+    id: 'asset-4',
+    title: 'Minimal Product Shot',
+    type: 'image',
+    format: 'JPEG',
+    resolution: '3600x2400',
+    size: '4.8 MB',
+    thumbnail: 'https://images.pexels.com/photos/1029243/pexels-photo-1029243.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tags: ['Product', 'Minimal', 'Clean'],
+    license: 'Commercial',
+    status: 'approved',
+  },
+];
